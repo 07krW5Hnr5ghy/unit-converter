@@ -46,6 +46,6 @@ app.post("/convert",(req,res)=>{
     }
 });
 
-app.liste(PORT,()=>{
+app.listen(PORT,()=>{
     console.log(`Unit Converted app runing at http://localhost:${PORT}`);
 });
