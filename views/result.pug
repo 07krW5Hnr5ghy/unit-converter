@@ -1,0 +1,13 @@
+doctype html 
+html
+    head
+        title Conversion Result
+        link(rel="stylesheet",href="/styles.css")
+    body 
+        if error
+            h2 Error 
+            p= error
+        else
+            h2 Conversion Result
+            p #{value} #{fromUnit} is equal to #{convertedValue.toFixed(2)} #{toUnit}
+        a(href="/") Go Back
