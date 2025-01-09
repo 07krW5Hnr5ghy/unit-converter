@@ -3,6 +3,37 @@ html
     head 
         title Unit Converter 
         link(rel="stylesheet",href="/styles.css")
+        script. 
+            const unitOptions = {
+                length: ["meter", "kilometer", "inch", "centimeter"],
+                weight: ["kilogram", "gram", "pound"],
+                temperature: ["celsius", "fahrenheit", "kelvin"]
+            }
+
+            function updateUnitOptions(){
+                const category = document.getElementById("category").value;
+                const fromUnit = document.getElementById("fromUnit");
+                const toUnit = document.getElementById("toUnit");
+
+                fromUnit.innerHTML = "";
+                toUnit.innerHTML = "";
+
+                unitOptions[category].forEach((unit)=>{
+                    const fromOption = document.createElement("option");
+                    fromOption.value = unit;
+                    fromOption.textContent = unit;
+                    fromUnit.appendChild(fromOption);
+
+                    const toOption = document.createElement("option");
+                    toOption.value = unit;
+                    toOption.textContent = unit;
+                    toUnit.appendChild(toOption);
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded",()=>{
+                updateUnitOptions(); 
+            });
     body 
         h1 Unit Converter
         form(action="/convert",method="POST")
@@ -11,26 +42,18 @@ html
             br
 
             label(for="category") Select category:
-            select(name="category" required)
+            select(id="category" name="category" required onchange="updateUnitOptions()")
                 option(value="length") Length
                 option(value="weight") Weight 
                 option(value="temperature") Temperature
             br
 
             label(for="fromUnit") Convert from:
-            select(name="fromUnit" required)
-                option(value="meter") Meter
-                option(value="kilometer") Kilometer
-                option(value="inch") Inch 
-                option(value="centimeter") Centimeter
+            select(id="fromUnit" name="fromUnit" required)
             br
 
             label(for="toUnit") Convert to: 
-            select(name="toUnit" required)
-                option(value="kilometer") Kilometer
-                option(value="meter") Meter 
-                option(value="centimeter") Centimeter
-                option(value="inch") Inch
+            select(id="toUnit" name="toUnit" required)
             br
 
             button(type="submit") Convert
