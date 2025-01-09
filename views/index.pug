@@ -1,0 +1,36 @@
+doctype html
+html 
+    head 
+        title Unit Converter 
+        link(rel="stylesheet",href="/style.css")
+    body 
+        h1 Unit Converter
+        form(action="/convert",method="POST")
+            label(for="value") Enter value: 
+            input(type="number" name="value" required)
+            br
+
+            label(for="category") Select category:
+            select(name="category" required)
+                option(value="length") Length
+                option(value="weight") Weight 
+                option(value="temperature") Temperature
+            br
+
+            label(for="fromUnit") Convert from:
+            select(name="fromUnit" required)
+                option(value="meter") Meter
+                option(value="kilometer") Kilometer
+                option(value="inch") Inch 
+                option(value="centimeter") Centimeter
+            br
+
+            label(for="toUnit") Convert to: 
+            select(name="toUnit" required)
+                option(value="kilometer") Kilometer
+                option(value="meter") Meter 
+                option(value="centimeter") Centimeter
+                option(value="inch") Inch
+            br
+
+            button(type="submit") Convert
