@@ -30,13 +30,20 @@ const conversions = {
     },
 };
 
+
+// help functions
+function capitalizeFirstLetter(val){
+    return String(val).charAt(0).toLocaleUpperCase() + String(val).slice(1);
+}
+
+// routes
 app.get("/",(req,res)=>{
     res.render("index");
 });
 
 app.post("/convert",(req,res)=>{
     const {value,fromUnit,toUnit,category} = req.body;
-    const conversionKey = `${fromUnit}To${toUnit}`;
+    const conversionKey = `${fromUnit}To${capitalizeFirstLetter(toUnit)}`;
 
     if(conversions[category]&&conversions[category][conversionKey]){
         const convertedValue = conversions[category][conversionKey](parseFloat(value));
