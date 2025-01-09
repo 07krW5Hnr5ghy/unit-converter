@@ -11,22 +11,46 @@ app.set("view engine","pug");
 
 const conversions = {
     length: {
+
         meterToKilometer: (value) => value / 1000,
         kilometerToMeter: (value) => value * 1000,
+
+        centimeterToKilometer:(value) => value/100000,
+        kilometerToCentimeter:(value) => value*100000,
+
         inchToCentimeter: (value) => value * 2.54,
         centimeterToInch: (value) => value / 2.54,
+
+        inchToMeter:(value) => value*0.0254,
+        meterToInch:(value) => value/0.0254,
+
+        inchToKilometer:(value) => value*39370.10,
+        kilometerToInch:(value) => value/39370.10,
+
+        meterToCentimeter:(value) => value*100,
+        centimeterToMeter: (value) => value/100
     },
     weight: {
         kilogramToGram: (value) => value * 1000,
         gramToKilogram: (value) => value / 1000,
+
         poundToKilogram: (value) => value * 0.453592,
         kilogramToPound: (value) => value / 0.453592,
+
+        gramToPound: (value) => value / 453.92,
+        poundToGram: (value) => value * 453.92,
+
     },
     temperature: {
+
         celsiusToFahrenheit: (value) => (value * 9) / 5 + 32,
         fahrenheitToCelsius: (value) => ((value - 32) * 5) / 9,
+
         celsiusToKelvin: (value) => value + 273.15,
         kelvinToCelsius: (value) => value - 273.15,
+
+        fahrenheitToKelvin: (value) => (((value-32)*5)/9)+273.15,
+        kelvinToFahrenheit: (value) => ((value-273.15)*9)/5+32,
     },
 };
 
